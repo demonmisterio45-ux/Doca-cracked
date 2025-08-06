@@ -1,10 +1,25 @@
+
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Workspace = game:GetService("Workspace")
+local Lighting = game:GetService("Lighting")
+local RunService = game:GetService("RunService")
+local StarterGui = game:GetService("StarterGui")
+
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/memejames/elerium-v2-ui-library/main/Library", true))()
 local window = library:AddWindow("Sync X", {
     main_color = Color3.fromRGB(139, 0, 0), -- Vermelho escuro
     min_size = Vector2.new(470, 470),
     can_resize = false,
 })
-local MainTab = Window:AddTab("Main")
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/memejames/elerium-v2-ui-library/main/Library", true))()
+local window = library:Addwindow("Sync X", {
+    main_color = Color3.fromRGB(139, 0, 0), -- Vermelho escuro
+    min_size = Vector2.new(470, 470),
+    can_resize = false,
+})
+local MainTab = window:AddTab("Main")
 local LocalPlayersFolder = MainTab:AddFolder("Local Players")
 LocalPlayersFolder:AddSwitch("Auto Eat Protein Egg Every 30 Minutes", function(state)
     getgenv().autoEatProteinEggActive = state
@@ -159,7 +174,7 @@ OpStuffFolder:AddButton("Remove Ad Portal", function()
     end
 end)
 
-local KillingTab = Window:AddTab("Killing")
+local KillingTab = window:AddTab("Killing")
 KillingTab:AddSwitch("Auto Equip Punch", function(state)
     getgenv().autoEquipPunch = state
     task.spawn(function()
@@ -302,7 +317,7 @@ KillingTab:AddButton("Unview Player", function()
     end
 end)
 
-local StatsTab = Window:AddTab("Stats")
+local StatsTab = window:AddTab("Stats")
 local StatsFolder = StatsTab:AddFolder("Stats")
 StatsFolder:AddButton("Show Kills Gui", function()
     local leaderstats = LocalPlayer:FindFirstChild("leaderstats")
@@ -341,7 +356,7 @@ StatsTab:AddFolder("Stats Gained")
 Players.PlayerAdded:Connect(function() end)
 Players.PlayerRemoving:Connect(function() end)
 
-local FarmPlusTab = Window:AddTab("Farm++")
+local FarmPlusTab = window:AddTab("Farm++")
 local AutoGymFolder = FarmPlusTab:AddFolder("Auto Gym")
 AutoGymFolder:AddLabel("Jungle Gym")
 local jungleGymMachines = {
@@ -389,7 +404,7 @@ for label, toolName in pairs(toolSwitches) do
     end)
 end)
 
-local EggsTab = Window:AddTab("Eggs")
+local EggsTab = window:AddTab("Eggs")
 EggsTab:AddTextBox("Select Pet", function(petName)
     getgenv().selectedPet = petName
 end)
@@ -426,7 +441,7 @@ EggsTab:AddSwitch("Auto Hatch Crystal", function(state)
     end)
 end)
 
-local PlayersTab = Window:AddTab("Players")
+local PlayersTab = window:AddTab("Players")
 PlayersTab:AddTextBox("Walkspeed", function(value)
     getgenv().ws = tonumber(value)
 end)
@@ -526,7 +541,7 @@ PlayersTab:AddButton("ChatSpy", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/CAXAP26BKyCH/ChatSpy/main/ChatSpy"))()
 end)
 
-local CreditsTab = Window:AddTab("Credits")
+local CreditsTab = window:AddTab("Credits")
 CreditsTab:AddLabel("This Script made by Doca")
 CreditsTab:AddLabel("Roblox: Xx_GPWArka")
 CreditsTab:AddLabel("Discord: itsdocas_60003")
@@ -534,7 +549,7 @@ CreditsTab:AddButton("Copy Discord Invite link", function()
     setclipboard("https://discord.gg/itsdocas_60003")
 end)
 
-local BoostTab = Window:AddTab("Boost Tab")
+local BoostTab = window:AddTab("Boost Tab")
 BoostTab:AddSwitch("Auto Kill Good Karma", function(state)
     getgenv().autoKillGoodKarma = state
     task.spawn(function()
